@@ -16,12 +16,12 @@ class Logger(object):
         - `outputDir`:
         """
         self._output_dir = outputDir
-        self._log_file_dict = {'log' : open(self._output_dir + '/log', 'a+r')}
+        self._log_file_dict = {'log' : open(self._output_dir + '/log', 'w+')}
         
         #self._mutex_done = threading.Lock()
         #self._mutex_log = threading.Lock()
 
-        self._done_file = open(self._output_dir + '/key.done', 'a+r')
+        self._done_file = open(self._output_dir + '/key.done', 'w+')
 
     def add_log(self, d):
         """
@@ -30,7 +30,7 @@ class Logger(object):
         - `d`: log_file_key : log_file_name
         """
         for i, j in d.iteritems():
-            self._log_file_dict[i] = open(self._output_dir + j, 'a+r')
+            self._log_file_dict[i] = open(self._output_dir + j, 'w+')
             
     def get_key_done(self, lfkl):
         """get the keys that have been crawled
